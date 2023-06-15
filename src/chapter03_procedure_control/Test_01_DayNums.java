@@ -23,9 +23,43 @@ public class Test_01_DayNums {
         System.out.println("请输入日期：");
         int day = sc.nextInt();
 
+        //声明一个变量，存储总天数：
+        int dayNums = 0;
+
         
+        switch(month){
+            case 12:
+                dayNums += 30;
+            case 11:
+                dayNums += 31;
+            case 10:
+                dayNums += 30;
+            case 9:
+                dayNums += 31;
+            case 8:
+                dayNums += 31;
+            case 7:
+                dayNums += 30;
+            case 6:
+                dayNums += 31;
+            case 5:
+                dayNums += 30;
+            case 4:
+                dayNums += 31;
+            case 3:
+                dayNums += 28;
+                if((year % 4 ==0 && year % 100 != 0) || year % 400 == 0){
+                    dayNums += 1;
+                }
+            case 2:
+                dayNums += 31;
+            case 1:
+                dayNums += day;
 
 
+        }
+
+        System.out.println(dayNums);
 
 
 
