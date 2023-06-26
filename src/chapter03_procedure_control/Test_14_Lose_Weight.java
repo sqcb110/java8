@@ -12,34 +12,38 @@ import java.util.Date;
 
 public class Test_14_Lose_Weight {
     public static void main(String[] args) throws ParseException {
-        /*Date now = new Date();
-        long nowLong = now.getTime();
-        System.out.println(nowLong);
 
-         */
-
+        //todo 1： 初始日期和初始体重
         DateFormat df = DateFormat.getDateInstance();
-        //String s = df.format(now);
-        //System.out.println(s);
-
-
-        //calendar.setTime(now);
-        //System.out.println(calendar.getTime());
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = sdf.parse("2023-06-30");
         String dt = df.format(date);
 
+        int weight = 77;
+
+        //todo 2：
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        int i = calendar.get(calendar.DAY_OF_WEEK);
-        System.out.println(i);
+        System.out.println(dt + ":" + weight);
 
-        System.out.println(dt);
-
-        while (!(dt.equals("2023-9-30"))){
-            calendar.add(calendar.DATE,7);
+        while (calendar.get(calendar.YEAR) <= 2023 && calendar.get(calendar.MONTH) < Calendar.OCTOBER) {
+            calendar.add(calendar.DATE, 1);
+            if (calendar.get(calendar.DAY_OF_WEEK) == 6) {
+                weight -= 1;
+                Date date_minus = calendar.getTime();
+                String dt_minus = df.format(date_minus);
+                System.out.println(dt_minus + ":" + weight);
+            }
         }
 
+/*        for (; calendar.get(calendar.YEAR) <= 2023 && calendar.get(calendar.MONTH) < 10; calendar.add(calendar.DATE,1)) {
+            if (calendar.get(calendar.DAY_OF_WEEK) == 6) {
+                weight -= 1;
+                Date date_minus = calendar.getTime();
+                String dt_minus = df.format(date_minus);
+                System.out.println(dt_minus + ":" + weight);
+            }
+
+        }*/
     }
 }
