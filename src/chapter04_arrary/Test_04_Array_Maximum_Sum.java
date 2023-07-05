@@ -9,7 +9,8 @@ package chapter04_arrary;
 public class Test_04_Array_Maximum_Sum {
     public static void main(String[] args) {
         //1.一个整形数组：
-        int[] arr = new int[]{1,2,3,-4,-10,5,7,18,96,23,24,45,77,-30};
+        //int[] arr = new int[]{1,2,3,-4,-10,5,7,18,96,23,24,45,77,-30};
+        int[] arr = new int[]{-5,1,2,3,4,5,6,7,8,9,-100,10};
 
         int sum = 0;
 
@@ -40,7 +41,9 @@ public class Test_04_Array_Maximum_Sum {
 
         //4.数组arr连续元素最大和，等于arr[minIndex+1]累加到arr[maxIndex],如果min大于0，则等于从arr[0]累加到arr[maxIndex]
         int maxSum = 0;
-        if (min<=0){
+        if(minIndex > maxIndex){
+            maxSum = arr[maxIndex];
+        }else if (min<=0){
             for (int i = minIndex+1; i <= maxIndex; i++) {
                 maxSum += arr[i];
             }
@@ -57,29 +60,28 @@ public class Test_04_Array_Maximum_Sum {
 
     public static int getGreatestSum(int[] arr){
         int greatestSum = 0;
-        if(arr == null || arr.length == 0){
-            return 0;
-        }
+
         int temp = greatestSum;
-        for(int i = 0;i < arr.length;i++){
+        for (int i = 0; i < arr.length; i++) {
             temp += arr[i];
 
             if(temp < 0){
                 temp = 0;
             }
 
-            if(temp > greatestSum){
+            if (temp > greatestSum){
                 greatestSum = temp;
             }
         }
-        if(greatestSum == 0){
+        if (greatestSum == 0){
             greatestSum = arr[0];
-            for(int i = 1;i < arr.length;i++){
-                if(greatestSum < arr[i]){
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] > greatestSum){
                     greatestSum = arr[i];
                 }
             }
         }
+
         return greatestSum;
     }
 
