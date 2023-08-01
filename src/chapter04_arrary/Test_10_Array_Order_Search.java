@@ -20,6 +20,5 @@ public class Test_10_Array_Order_Search {
         }
 
         System.out.println("value第一次在数组中出现的index是：" + index);
-        
     }
 }
