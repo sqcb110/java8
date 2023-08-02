@@ -23,15 +23,19 @@ public class Test_11_Binary_Search {
                 System.out.println("你要找的值的索引是：" + index);
                 break;
             }else if(value < arr[(start+end)/2]){
-                end = (start+end)/2;
+                end = (start+end)/2 - 1;
             }else {
-                start = (start+end)/2;
+                start = (start+end)/2 + 1;
             }
 
-            if(end - start <= 1){
+/*            if(end - start <= 1){
                 System.out.println("无此值");
                 break;
-            }
+            }*/
+
+        }
+        if(start >= end){
+            System.out.println("无此值");
         }
 
     }
