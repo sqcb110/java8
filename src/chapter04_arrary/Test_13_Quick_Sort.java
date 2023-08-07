@@ -10,26 +10,55 @@ import java.util.Scanner;
 
 public class Test_13_Quick_Sort {
     public static void main(String[] args) {
-        int[] data1 = {9, -16, 30, 23, -30, -49, 25, 21, 30};
+        //int[] data1 = {9, -16, 30, 23, -30, -49, 25, 21, 30};
 
         //生成长度为10000000的数组，且没有重复值。
-        Scanner sc = new Scanner(System.in);
-        int[] data2 = new int[10000000];
-        HashSet<Integer> hashSet = new HashSet<>(10000000);
-        while (hashSet.size() < 10000000) {
-            int a = sc.nextInt();
-            int size = hashSet.size();
-            hashSet.add(a);
-            data2[size - 1] = a;
+        System.out.println("开始生产数组data2");
+        int[] data2 = new int[1000000];
+        HashSet<Integer> hashSet = new HashSet<>(data2.length);
+        while (hashSet.size() < data2.length) {
+            int a =(int)(Math.random() * 10000000 + 1);
+            if (!(hashSet.contains(a))) {
+                hashSet.add(a);
+                int size = hashSet.size();
+                data2[size - 1] = a;
+            }
         }
-
+        System.out.println("数组data2生产结束");
+        System.out.println("数组data2的长度为" + data2.length);
+        //复制一个数组
+        int[] data3 = new int[data2.length];
+        System.out.println("开始复制生产data3");
+        for (int i = 0; i < data2.length; i++) {
+            data3[i] = data2[i];
+        }
+        System.out.println("data3生产结束");
+        System.out.println("data3长度为：" + data3.length);
         //data2 排序：
+        System.out.println("开始快排");
         long begin = System.currentTimeMillis();
         sortArray(data2);
         long stop = System.currentTimeMillis();
+        System.out.println("快排结束");
+        System.out.println("快排的耗时毫秒数为" + (stop-begin));
 
-        System.out.println((stop-begin)/1000);
-        //data2排序后：
+        //data3冒泡排序
+        System.out.println("开始冒泡排序");
+        long begin3 = System.currentTimeMillis();
+        for (int i = 0; i < data3.length; i++) {
+            for (int j = 0; j < data3.length - i - 1; j++) {
+                int tmp;
+                if (data3[j] > data3[j+1]){
+                    tmp = data3[j];
+                    data3[j] = data3[j+1];
+                    data3[j+1] = tmp;
+                }
+            }
+        }
+        long end3 = System.currentTimeMillis();
+        System.out.println("冒泡排序结束");
+        System.out.println("冒泡排序的耗时毫秒数为：" + (end3 - begin3));
+        //data1排序后：
 /*        for (int i = 0; i < data1.length; i++) {
             System.out.print(data1[i] + " ");
         }*/
