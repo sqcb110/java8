@@ -6,7 +6,6 @@ package chapter04_arrary;
 */
 
 import java.util.HashSet;
-import java.util.Scanner;
 
 public class Test_13_Quick_Sort {
     public static void main(String[] args) {
